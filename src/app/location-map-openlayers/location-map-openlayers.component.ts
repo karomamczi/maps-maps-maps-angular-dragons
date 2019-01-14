@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Projection } from '../app.model';
+import { Coordinate } from 'openlayers';
 
 @Component({
   selector: 'app-location-map-openlayers',
   templateUrl: './location-map-openlayers.component.html',
   styleUrls: ['./location-map-openlayers.component.scss']
 })
-export class LocationMapOpenlayersComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class LocationMapOpenlayersComponent {
+  countryCentroid: Coordinate;
+  projectionEnum = Projection;
 }

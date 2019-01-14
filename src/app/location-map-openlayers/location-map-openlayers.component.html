@@ -1,3 +1,26 @@
-<p>
-  location-map-openlayers works!
-</p>
+<section id="map">
+  <aol-map #map [width]="'100%'" [height]="'100%'">
+    <aol-interaction-default></aol-interaction-default>
+    <aol-control-defaults></aol-control-defaults>
+    <aol-view [zoom]="16">
+      <aol-coordinate
+        [x]="19.948039"
+        [y]="50.064218"
+        [srid]="projectionEnum.WorldGeodeticSystem84"
+      ></aol-coordinate>
+    </aol-view>
+    <aol-layer-tile> <aol-source-osm></aol-source-osm> </aol-layer-tile>
+  </aol-map>
+
+  <aol-overlay *ngIf="countryCentroid">
+    <aol-coordinate
+      [x]="countryCentroid[0]"
+      [y]="countryCentroid[1]"
+      [srid]="projectionEnum.WorldGeodeticSystem84"
+    >
+    </aol-coordinate>
+    <aol-content>
+      <div class="ol-popup"><h1>This is an overlay</h1></div>
+    </aol-content>
+  </aol-overlay>
+</section>

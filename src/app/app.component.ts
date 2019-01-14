@@ -1,7 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { routes } from './app-routing.module';
-import { NgbTabChangeEvent } from '@ng-bootstrap/ng-bootstrap';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { Route } from './app.model';
 
 @Component({
