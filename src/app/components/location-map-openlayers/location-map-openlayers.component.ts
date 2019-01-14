@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Projection } from '../app.model';
+import { Projection } from '../../models/app.model';
 import { Coordinate } from 'openlayers';
 
 @Component({

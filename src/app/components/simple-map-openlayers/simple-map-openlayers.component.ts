@@ -9,7 +9,7 @@ import {
   proj,
   Extent
 } from 'openlayers';
-import { Projection } from '../app.model';
+import { Projection } from '../../models/app.model';
 
 @Component({
   selector: 'app-simple-map-openlayers',

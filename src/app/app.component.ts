@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Route } from './app.model';
+import { Route } from './models/app.model';
 
 @Component({
   selector: 'app-root',
