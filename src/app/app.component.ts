@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { routes } from './app-routing.module';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'maps-maps-maps-angular-dragons';
+  routePaths = routes.map(route => route.path);
 }
