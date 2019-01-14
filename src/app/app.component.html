@@ -3,7 +3,9 @@
     <ng-container *ngFor="let routePath of routePaths">
       <ngb-tab>
         <ng-template ngbTabTitle>
-          <a [routerLink]="'/' + routePath">Simple Map Openlayers</a>
+          <a [routerLink]="'/' + routePath">{{
+            getNameFromRoutePath(routePath)
+          }}</a>
         </ng-template>
         <ng-template ngbTabContent><router-outlet></router-outlet></ng-template>
       </ngb-tab>

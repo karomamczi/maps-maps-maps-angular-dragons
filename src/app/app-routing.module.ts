@@ -6,6 +6,7 @@ import { LocationMapOpenlayersComponent } from './location-map-openlayers/locati
 import { LocationMapLeafletComponent } from './location-map-leaflet/location-map-leaflet.component';
 
 export const routes: Routes = [
+  { path: '', component: SimpleMapOpenlayersComponent },
   { path: 'simple-map-openlayers', component: SimpleMapOpenlayersComponent },
   { path: 'simple-map-leaflet', component: SimpleMapLeafletComponent },
   {

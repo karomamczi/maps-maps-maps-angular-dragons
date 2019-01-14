@@ -1,2 +1,16 @@
 @import '~bootstrap/dist/css/bootstrap.css';
 @import '~font-awesome/css/font-awesome.css';
+
+// Modify default OpenLayers styling
+.ol-mouse-position {
+  background-color: rgba(0, 60, 136, 0.5);
+  border-radius: 0.2rem;
+  top: unset !important;
+  bottom: 8px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.ol-control button {
+  cursor: pointer;
+}
