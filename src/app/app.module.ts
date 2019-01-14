@@ -10,6 +10,7 @@ import { SimpleMapOpenlayersComponent } from './components/simple-map-openlayers
 import { SimpleMapLeafletComponent } from './components/simple-map-leaflet/simple-map-leaflet.component';
 import { LocationMapLeafletComponent } from './components/location-map-leaflet/location-map-leaflet.component';
 import { LocationMapOpenlayersComponent } from './components/location-map-openlayers/location-map-openlayers.component';
+import { CountriesService } from './services/countries/countries.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { LocationMapOpenlayersComponent } from './components/location-map-openla
     AngularOpenlayersModule,
     LeafletModule.forRoot()
   ],
-  providers: [],
+  providers: [CountriesService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
