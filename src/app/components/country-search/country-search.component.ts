@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CountriesService } from 'src/app/services/countries/countries.service';
 import { Observable, of } from 'rxjs';
 import {
@@ -8,6 +8,8 @@ import {
   distinctUntilChanged,
   switchMap
 } from 'rxjs/operators';
+import { Country } from 'src/app/models/app.model';
+import { NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-country-search',
@@ -15,7 +17,8 @@ import {
   styleUrls: ['./country-search.component.scss']
 })
 export class CountrySearchComponent {
-  model: any;
+  @Output() country = new EventEmitter<Country>();
+  model: Country | string;
   searching = false;
   searchFailed = false;
 
@@ -39,4 +42,8 @@ export class CountrySearchComponent {
     );
 
   formatter = (x: { name: string }) => x.name;
+
+  selectedItem(event: NgbTypeaheadSelectItemEvent): void {
+    this.country.emit(event.item);
+  }
 }

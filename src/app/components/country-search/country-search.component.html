@@ -13,6 +13,7 @@
     placeholder="Insert name..."
     [inputFormatter]="formatter"
     [resultFormatter]="formatter"
+    (selectItem)="selectedItem($event)"
   />
   <span class="invalid-feedback red" *ngIf="searchFailed">
     Whoops. Looks like there is no country like that.

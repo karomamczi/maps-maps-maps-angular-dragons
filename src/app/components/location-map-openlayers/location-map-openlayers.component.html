@@ -10,19 +10,26 @@
       ></aol-coordinate>
     </aol-view>
     <aol-layer-tile> <aol-source-osm></aol-source-osm> </aol-layer-tile>
+    <aol-overlay *ngIf="country?.latlng">
+      <aol-coordinate
+        [x]="country.latlng[1]"
+        [y]="country.latlng[0]"
+        [srid]="projectionEnum.WorldGeodeticSystem84"
+      >
+      </aol-coordinate>
+      <aol-content>
+        <div id="popup" class="ol-popup">
+          <button
+            type="button"
+            class="btn float-right fa fa-times"
+            aria-hidden="true"
+            (click)="closePopup()"
+          ></button>
+          <div id="popup-content">Yay! We are in {{ country.name }} baby!</div>
+        </div>
+      </aol-content>
+    </aol-overlay>
   </aol-map>
-
-  <aol-overlay *ngIf="countryCentroid">
-    <aol-coordinate
-      [x]="countryCentroid[0]"
-      [y]="countryCentroid[1]"
-      [srid]="projectionEnum.WorldGeodeticSystem84"
-    >
-    </aol-coordinate>
-    <aol-content>
-      <div class="ol-popup"><h1>This is an overlay</h1></div>
-    </aol-content>
-  </aol-overlay>
 </section>
 
-<app-country-search></app-country-search>
+<app-country-search (country)="handleCountry($event)"></app-country-search>
