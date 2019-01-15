@@ -1,3 +1,15 @@
-<p>
-  simple-map-leaflet works!
-</p>
+<div
+  leaflet
+  style="height: 350px;"
+  [leafletOptions]="options"
+  [leafletLayers]="layers"
+  [leafletLayersControl]="layersControl"
+  (leafletClick)="handleClick($event)"
+  (leafletMapMoveEnd)="handleMoveEnd($event)"
+  (leafletMapReady)="handleMapInstance($event)"
+></div>
+
+<!-- <app-location-info
+  [lastPoint]="lastPoint"
+  [lastExtent]="lastExtent"
+></app-location-info> -->

@@ -1,3 +1,5 @@
+import { Layer } from 'leaflet';
+
 export enum Projection {
   WorldGeodeticSystem84 = 'EPSG:4326',
   PseudeMercator = 'EPSG:3857'
@@ -65,4 +67,35 @@ export interface Country {
   flag: string;
   regionalBlocs: RegionalBloc[];
   cioc: string;
+}
+
+export class LeafletLayers {
+  constructor(
+    public baseLayers: BaseLayer[],
+    public baseLayerId: string,
+    public overlayLayers: OverlayLayer[]
+  ) {}
+}
+
+export class BaseLayer {
+  constructor(
+    public id: string,
+    public name: string,
+    public enabled: boolean,
+    public layer: Layer
+  ) {}
+}
+
+export class OverlayLayer {
+  constructor(
+    public id: string,
+    public name: string,
+    public enabled: boolean,
+    public layer: Layer
+  ) {}
+}
+
+export class LeafletControlLayersConfig {
+  baseLayers: { [name: string]: Layer } = {};
+  overlays: { [name: string]: Layer } = {};
 }
