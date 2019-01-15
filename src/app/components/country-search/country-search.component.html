@@ -1,0 +1,20 @@
+<section class="form-group">
+  <label for="typeahead-http">What country would you like to find?</label>
+  <span *ngIf="searching"
+    ><i class="fa fa-spinner fa-pulse" aria-hidden="true"></i
+  ></span>
+  <input
+    id="typeahead-http"
+    type="text"
+    class="form-control"
+    [class.is-invalid]="searchFailed"
+    [(ngModel)]="model"
+    [ngbTypeahead]="search"
+    placeholder="Insert name..."
+    [inputFormatter]="formatter"
+    [resultFormatter]="formatter"
+  />
+  <span class="invalid-feedback red" *ngIf="searchFailed">
+    Whoops. Looks like there is no country like that.
+  </span>
+</section>
