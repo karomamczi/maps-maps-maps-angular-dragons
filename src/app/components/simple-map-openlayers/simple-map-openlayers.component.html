@@ -48,15 +48,7 @@
   </aol-map>
 </section>
 
-<section>
-  <p *ngIf="lastExtent">
-    Now you can see me at extent of {{ lastExtent[0] | number: '1.4-4' }}
-    {{ lastExtent[1] | number: '1.4-4' }} bottom-left and
-    {{ lastExtent[2] | number: '1.4-4' }}
-    {{ lastExtent[3] | number: '1.4-4' }} upper-right
-  </p>
-  <p *ngIf="lastPoint">
-    Wow, you've just clicked here: {{ lastPoint[0] | number: '1.4-4' }}
-    {{ lastPoint[1] | number: '1.4-4' }}.
-  </p>
-</section>
+<app-location-info
+  [lastPoint]="lastPoint"
+  [lastExtent]="lastExtent"
+></app-location-info>
