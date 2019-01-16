@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  LatLng,
   MapOptions,
   latLng,
   tileLayer,
   LeafletMouseEvent,
   Map,
-  Layer
+  Layer,
+  Marker,
+  marker,
+  icon,
+  LatLngExpression
 } from 'leaflet';
 import {
   LeafletLayers,
@@ -20,8 +23,11 @@ import {
   styleUrls: ['./simple-map-leaflet.component.scss']
 })
 export class SimpleMapLeafletComponent implements OnInit {
-  lastPoint: LatLng;
-  layers: Layer[];
+  lastPoint: LatLngExpression;
+  lastExtent: number[];
+  initialLayers: Layer[];
+  layers: Layer[] | Marker[];
+  map: Map;
   openCycleMapOptions = new BaseLayer(
     'opencyclemap',
     'Open Cycle Map',
@@ -70,14 +76,45 @@ export class SimpleMapLeafletComponent implements OnInit {
       .map(layer => layer.layer);
     newLayers.unshift(baseLayer.layer);
 
-    this.layers = newLayers;
+    this.initialLayers = newLayers;
+
+    this.layers = this.initialLayers;
   }
 
   handleClick(event: LeafletMouseEvent): void {
-    this.lastPoint = event.latlng;
+    this.lastPoint = [event.latlng.lat, event.latlng.lng];
+    this.defineNewMarker();
   }
 
-  handleMoveEnd(): void {}
+  defineNewMarker(): void {
+    const newMarker = marker(this.lastPoint, {
+      icon: icon({
+        iconSize: [25, 41],
+        iconAnchor: [13, 41],
+        iconUrl: 'leaflet/marker-icon.png',
+        shadowUrl: 'leaflet/marker-shadow.png'
+      })
+    });
 
-  handleMapInstance(map: Map): void {}
+    this.layers = [...this.initialLayers, newMarker];
+  }
+
+  handleMoveEnd(): void {
+    this.calculateCurrentBounds();
+  }
+
+  handleMapInstance(map: Map): void {
+    this.map = map;
+    this.calculateCurrentBounds();
+  }
+
+  calculateCurrentBounds(): void {
+    const bounds = this.map.getBounds();
+    this.lastExtent = [
+      bounds.getSouthWest().lat,
+      bounds.getSouthWest().lng,
+      bounds.getNorthEast().lat,
+      bounds.getNorthEast().lng
+    ];
+  }
 }
