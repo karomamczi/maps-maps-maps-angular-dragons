@@ -77,17 +77,16 @@ export class SimpleMapLeafletComponent implements OnInit {
     newLayers.unshift(baseLayer.layer);
 
     this.initialLayers = newLayers;
-
     this.layers = this.initialLayers;
   }
 
   handleClick(event: LeafletMouseEvent): void {
     this.lastPoint = [event.latlng.lat, event.latlng.lng];
-    this.defineNewMarker();
+    this.layers = [...this.initialLayers, this.getNewMarker()];
   }
 
-  defineNewMarker(): void {
-    const newMarker = marker(this.lastPoint, {
+  getNewMarker(): Marker {
+    return marker(this.lastPoint, {
       icon: icon({
         iconSize: [25, 41],
         iconAnchor: [13, 41],
@@ -95,8 +94,6 @@ export class SimpleMapLeafletComponent implements OnInit {
         shadowUrl: 'leaflet/marker-shadow.png'
       })
     });
-
-    this.layers = [...this.initialLayers, newMarker];
   }
 
   handleMoveEnd(): void {
