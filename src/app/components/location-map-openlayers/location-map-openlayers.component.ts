@@ -13,7 +13,7 @@ export class LocationMapOpenlayersComponent {
   country: Country;
   projectionEnum = Projection;
 
-  handleCountry(country: Country): void {
+  handleCountrySelect(country: Country): void {
     this.country = country;
     this.map.instance.getView().animate({
       center: proj.fromLonLat([this.country.latlng[1], this.country.latlng[0]]),

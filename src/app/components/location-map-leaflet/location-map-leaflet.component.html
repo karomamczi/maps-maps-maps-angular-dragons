@@ -1,0 +1,10 @@
+<div
+  leaflet
+  style="height: 350px;"
+  [leafletOptions]="options"
+  (leafletMapReady)="handleMapInstance($event)"
+></div>
+
+<app-country-search
+  (country)="handleCountrySelect($event)"
+></app-country-search>
