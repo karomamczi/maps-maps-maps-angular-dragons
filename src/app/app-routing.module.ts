@@ -6,14 +6,14 @@ import { LocationMapOpenlayersComponent } from './components/location-map-openla
 import { LocationMapLeafletComponent } from './components/location-map-leaflet/location-map-leaflet.component';
 
 export const routes: Routes = [
-  { path: '', component: SimpleMapOpenlayersComponent },
   { path: 'simple-map-openlayers', component: SimpleMapOpenlayersComponent },
   { path: 'simple-map-leaflet', component: SimpleMapLeafletComponent },
   {
     path: 'location-map-openlayers',
     component: LocationMapOpenlayersComponent
   },
-  { path: 'location-map-leaflet', component: LocationMapLeafletComponent }
+  { path: 'location-map-leaflet', component: LocationMapLeafletComponent },
+  { path: '', redirectTo: 'simple-map-openlayers', pathMatch: 'full' }
 ];
 
 @NgModule({
