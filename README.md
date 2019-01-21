@@ -12,6 +12,10 @@ There are plenty of apps, which core functionality is based on geolocation. We a
 
 [Maps, maps, maps!](https://slides.com/karomamczi/maps-maps-maps)
 
+## Contributions
+
+[REST Countries](https://restcountries.eu/)
+
 ## Angular version
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.4.
